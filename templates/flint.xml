@@ -1,7 +1,7 @@
 <Container version="2">
   <Name>flint</Name>
-  <Repository>node:22-alpine</Repository>
-  <Registry>https://hub.docker.com/_/node</Registry>
+  <Repository>ghcr.io/tatsoft/flint:latest</Repository>
+  <Registry>https://github.com/tatsoft/packages/container/package/flint</Registry>
   <Network>bridge</Network>
 
   <Shell>sh</Shell>
@@ -32,10 +32,9 @@ diff and version them with git at any time.
 - **Health** — six-dimension checkup with one-click fixes.
 
 ### First run
-On first start the container installs `flint-skills-hub` from npm into `/config`, then
-serves the web UI on port **8787**. Internet access is required only for that initial
-install (and for updates). Config, logs and the npm install persist in the appdata path,
-so later starts are fast and offline.
+Flint is baked into the image, so the container starts instantly and needs no
+internet access at runtime. Config and logs persist in the appdata path, so your
+library, tags and presets survive recreation.
 
 ### Paths
 | Container | Host default | Purpose |
@@ -57,7 +56,7 @@ Report issues upstream at https://github.com/lcy362/flint/issues
   <Category>Tools:Utilities</Category>
   <ExtraSearchTerms>skills skill manager ai agent claude code cursor hermes hub store library</ExtraSearchTerms>
 
-  <Requires>Internet access on first start to install flint-skills-hub from npm.</Requires>
+  <Requires>None. The image ships Flint preinstalled and runs offline.</Requires>
   <Changes>Initial release.</Changes>
   <Date>2026-11-17</Date>
 
@@ -72,5 +71,4 @@ Report issues upstream at https://github.com/lcy362/flint/issues
   <Config Name="FLINT_CONFIG" Target="FLINT_CONFIG" Default="/config/config.json" Mode="" Description="Path to the Flint config file." Type="Variable" Display="advanced" Required="true" Mask="false">/config/config.json</Config>
   <Config Name="FLINT_LOGS" Target="FLINT_LOGS" Default="/config/logs" Mode="" Description="Directory for Flint log files." Type="Variable" Display="advanced" Required="true" Mask="false">/config/logs</Config>
 
-  <PostArgs>/bin/sh -c "npm i -g --prefix /config flint-skills-hub &amp;&amp; exec /config/bin/flint -f -p 8787"</PostArgs>
 </Container>
