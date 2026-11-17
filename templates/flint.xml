@@ -8,7 +8,7 @@
   <Privileged>false</Privileged>
 
   <!-- App icon (PNG, 128x128) -->
-  <Icon>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/unraid-flint-app/main/icons/flint.png</Icon>
+  <Icon>https://raw.githubusercontent.com/tatsoft/unraid-flint-app/main/icons/flint.png</Icon>
 
   <!-- Port below is always the CONTAINER port -->
   <WebUI>http://[IP]:[PORT:8787]/</WebUI>
@@ -51,8 +51,8 @@ Report issues upstream at https://github.com/lcy362/flint/issues
   <Support>https://github.com/lcy362/flint/issues</Support>
   <Project>https://github.com/lcy362/flint</Project>
 
-  <TemplateURL>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/unraid-flint-app/main/templates/flint.xml</TemplateURL>
-  <ReadMe>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/unraid-flint-app/main/README.md</ReadMe>
+  <TemplateURL>https://raw.githubusercontent.com/tatsoft/unraid-flint-app/main/templates/flint.xml</TemplateURL>
+  <ReadMe>https://raw.githubusercontent.com/tatsoft/unraid-flint-app/main/README.md</ReadMe>
 
   <Category>Tools:Utilities</Category>
   <ExtraSearchTerms>skills skill manager ai agent claude code cursor hermes hub store library</ExtraSearchTerms>

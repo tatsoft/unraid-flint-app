@@ -16,7 +16,7 @@
     logs (`docker logs flint`) when reporting template problems.
   </Profile>
 
-  <Icon>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/unraid-flint-app/main/icons/flint.png</Icon>
+  <Icon>https://raw.githubusercontent.com/tatsoft/unraid-flint-app/main/icons/flint.png</Icon>
   <WebPage>https://github.com/lcy362/flint</WebPage>
   <Forum>https://github.com/lcy362/flint/issues</Forum>
 </CommunityApplications>
