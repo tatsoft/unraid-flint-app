@@ -13,18 +13,20 @@ a local-first personal AI skills asset manager.
    Docker Repository and use the template directly.
 2. Set the **Config** path (default `/mnt/user/appdata/flint`) and the **WebUI** port
    (default `8787`).
-3. **Apply**. On first start the container installs `flint-skills-hub` from npm into
-   the config path and serves the web UI.
+3. **Apply**. Flint is baked into the image, so the container starts immediately and
+   serves the web UI on port 8787.
 4. Open the WebUI from the Docker tab, or browse `http://<server-ip>:8787`.
 
 ## What you get
 
 | Container path | Host default | Purpose |
 |---|---|---|
-| `/config` | `/mnt/user/appdata/flint` | `config.json`, logs, npm install |
+| `/config` | `/mnt/user/appdata/flint` | `config.json`, logs |
 
-First start needs internet access for the npm install; later starts work offline and
-are fast because everything persists in the appdata path.
+No internet access is needed at runtime: Flint ships preinstalled in
+`ghcr.io/tatsoft/flint`. Config and logs persist in the appdata path, so your library,
+tags and presets survive recreation. The image is rebuilt automatically on every change
+to the `Dockerfile` (see `.github/workflows/docker-publish.yml`).
 
 ## Usage
 
@@ -38,7 +40,7 @@ are fast because everything persists in the appdata path.
 
 - Unraid 7.0 or newer
 - Docker enabled
-- Internet access on first start (npm)
+- Docker enabled
 
 ## Support
 
