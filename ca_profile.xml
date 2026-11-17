@@ -1,0 +1,22 @@
+<CommunityApplications>
+  <!-- Repository overview shown in Community Apps -->
+  <Profile>
+    Unraid templates for **Flint**, a local-first personal AI skills asset manager.
+
+    Flint centralizes the skill directories used by your AI agents so you can collect,
+    tag, deduplicate and distribute `SKILL.md` skills from one local web UI — with no
+    cloud account and no telemetry. Skills remain plain files on your own disk.
+
+    This repository ships the Docker template plus icon and documentation. It installs
+    the upstream [`flint-skills-hub`](https://github.com/lcy362/flint) npm package on
+    first start.
+
+    Support: please use the upstream issue tracker at
+    https://github.com/lcy362/flint/issues and include your Unraid version and container
+    logs (`docker logs flint`) when reporting template problems.
+  </Profile>
+
+  <Icon>https://raw.githubusercontent.com/YOUR_GITHUB_USERNAME/unraid-flint-app/main/icons/flint.png</Icon>
+  <WebPage>https://github.com/lcy362/flint</WebPage>
+  <Forum>https://github.com/lcy362/flint/issues</Forum>
+</CommunityApplications>
