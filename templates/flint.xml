@@ -1,7 +1,7 @@
 <Container version="2">
   <Name>flint</Name>
-  <Repository>node:22-alpine</Repository>
-  <Registry>https://hub.docker.com/_/node</Registry>
+  <Repository>ghcr.io/tatsoft/flint:latest</Repository>
+  <Registry>https://github.com/tatsoft/packages/container/package/flint</Registry>
   <Network>bridge</Network>
 
   <Shell>sh</Shell>
@@ -13,7 +13,7 @@
   <!-- Port below is always the CONTAINER port -->
   <WebUI>http://[IP]:[PORT:8787]/</WebUI>
 
-  <Overview>Flint is a local-first personal AI skills asset manager. Collect, tag, deduplicate and distribute SKILL.md directories across your AI agents and projects from one local web UI. Everything runs on your server; no cloud, no account, no telemetry.</Overview>
+  <Overview>Flint is a local-first personal AI skills asset manager. Collect, tag, deduplicate and distribute SKILL.md directories across your AI agents and projects from one local web UI. Everything runs on your server; no cloud, no account, no telemetry. Interface in English, 中文 and العربية (RTL).</Overview>
 
   <Description><![CDATA[
 ## Flint — local-first AI skills hub
@@ -21,6 +21,9 @@
 Flint centralizes the skill directories used by your agents so you stop rewriting the same
 skill for every tool. Skills stay plain `SKILL.md` folders on your own disk — open, edit,
 diff and version them with git at any time.
+
+This build comes from [the tatsoft/flint fork](https://github.com/tatsoft/flint), which adds
+an Arabic interface (right-to-left layout) on top of upstream Flint.
 
 ### Features
 - **Library** — browse, search and preview every skill from registered repositories.
@@ -31,46 +34,49 @@ diff and version them with git at any time.
 - **Projects** — register a project, sync matched skills into `.agents/skills`.
 - **Health** — six-dimension checkup with one-click fixes.
 
+### Languages
+English, 中文 and **العربية**. Arabic switches the whole interface to right-to-left.
+Change it under **Settings**.
+
 ### First run
-On first start the container installs `flint-skills-hub` from npm into `/config`, then
-serves the web UI on port **8787**. Internet access is required only for that initial
-install (and for updates). Config, logs and the npm install persist in the appdata path,
-so later starts are fast and offline.
+Flint ships preinstalled in the image, so the container starts immediately and needs no
+internet access at runtime. Config and logs persist in the appdata path, so your library,
+tags and presets survive recreation.
 
 ### Paths
 | Container | Host default | Purpose |
 |---|---|---|
-| `/config` | `/mnt/user/appdata/flint` | config.json, logs, npm install |
+| `/config` | `/mnt/user/appdata/flint` | config.json, logs |
 
 Open the WebUI from the Docker tab or browse `http://<server-ip>:8787`.
 
 ### Support
-Report issues upstream at https://github.com/lcy362/flint/issues
+Template issues: open an issue in this repository.
+Application issues: https://github.com/lcy362/flint/issues
+Fork-specific issues: https://github.com/tatsoft/flint/issues
 ]]></Description>
 
-  <Support>https://github.com/lcy362/flint/issues</Support>
-  <Project>https://github.com/lcy362/flint</Project>
+  <Support>https://github.com/tatsoft/flint/issues</Support>
+  <Project>https://github.com/tatsoft/flint</Project>
 
   <TemplateURL>https://raw.githubusercontent.com/tatsoft/unraid-flint-app/main/templates/flint.xml</TemplateURL>
   <ReadMe>https://raw.githubusercontent.com/tatsoft/unraid-flint-app/main/README.md</ReadMe>
 
   <Category>Tools:Utilities</Category>
-  <ExtraSearchTerms>skills skill manager ai agent claude code cursor hermes hub store library</ExtraSearchTerms>
+  <ExtraSearchTerms>skills skill manager ai agent claude code cursor hermes hub store library arabic rtl</ExtraSearchTerms>
 
-  <Requires>Internet access on first start to install flint-skills-hub from npm.</Requires>
-  <Changes>Initial release.</Changes>
-  <Date>2026-11-17</Date>
+  <Requires>None. The image ships Flint preinstalled and runs offline.</Requires>
+  <Changes>Switch to the prebuilt ghcr.io/tatsoft/flint image (built from the tatsoft/flint fork) with Arabic UI and RTL.</Changes>
+  <Date>2026-11-18</Date>
 
   <MinVer>7.0</MinVer>
   <MaxVer>7.3</MaxVer>
 
   <License>MIT</License>
 
-  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/flint" Mode="rw" Description="Persistent config, logs and the flint-skills-hub npm install." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/flint</Config>
+  <Config Name="Config" Target="/config" Default="/mnt/user/appdata/flint" Mode="rw" Description="Persistent config and logs." Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/flint</Config>
   <Config Name="WebUI" Target="8787" Default="8787" Mode="tcp" Description="HTTP port for the Flint web UI." Type="Port" Display="always" Required="true" Mask="false">8787</Config>
   <Config Name="PORT" Target="PORT" Default="8787" Mode="" Description="Port Flint listens on inside the container." Type="Variable" Display="advanced" Required="true" Mask="false">8787</Config>
   <Config Name="FLINT_CONFIG" Target="FLINT_CONFIG" Default="/config/config.json" Mode="" Description="Path to the Flint config file." Type="Variable" Display="advanced" Required="true" Mask="false">/config/config.json</Config>
   <Config Name="FLINT_LOGS" Target="FLINT_LOGS" Default="/config/logs" Mode="" Description="Directory for Flint log files." Type="Variable" Display="advanced" Required="true" Mask="false">/config/logs</Config>
-
-  <PostArgs>/bin/sh -c "npm i -g --prefix /config flint-skills-hub &amp;&amp; exec /config/bin/flint -f -p 8787"</PostArgs>
 </Container>
