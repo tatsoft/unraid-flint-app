@@ -1,7 +1,10 @@
 # unraid-flint-app
 
-Unraid Community Applications template for **[Flint](https://github.com/lcy362/flint)** —
-a local-first personal AI skills asset manager.
+Unraid Community Applications template for **Flint** — a local-first personal AI
+skills asset manager. The image is built from
+[the `tatsoft/flint` fork](https://github.com/tatsoft/flint), which adds an Arabic UI
+locale with a right-to-left layout on top of upstream
+[`lcy362/flint`](https://github.com/lcy362/flint).
 
 > Flint centralizes the skill directories used by your AI agents. Collect, tag,
 > deduplicate and distribute `SKILL.md` skills from one local web UI. Skills stay
@@ -13,18 +16,20 @@ a local-first personal AI skills asset manager.
    Docker Repository and use the template directly.
 2. Set the **Config** path (default `/mnt/user/appdata/flint`) and the **WebUI** port
    (default `8787`).
-3. **Apply**. On first start the container installs `flint-skills-hub` from npm into
-   the config path and serves the web UI.
+3. **Apply**. Flint ships preinstalled in the image, so the container starts immediately.
 4. Open the WebUI from the Docker tab, or browse `http://<server-ip>:8787`.
 
 ## What you get
 
 | Container path | Host default | Purpose |
 |---|---|---|
-| `/config` | `/mnt/user/appdata/flint` | `config.json`, logs, npm install |
+| `/config` | `/mnt/user/appdata/flint` | `config.json`, logs |
 
-First start needs internet access for the npm install; later starts work offline and
-are fast because everything persists in the appdata path.
+No internet access is needed at runtime. Config and logs persist in the appdata path,
+so your library, tags and presets survive recreation.
+
+Interface languages: **English · 中文 · العربية** (Arabic switches the UI to RTL).
+Switch under Settings.
 
 ## Usage
 
@@ -38,16 +43,17 @@ are fast because everything persists in the appdata path.
 
 - Unraid 7.0 or newer
 - Docker enabled
-- Docker enabled
 
 ## Support
 
 Template issues: open an issue in this repository.
 
-Application issues: https://github.com/lcy362/flint/issues
+Application issues: https://github.com/lcy362/flint/issues (upstream) or
+https://github.com/tatsoft/flint/issues (this fork).
 
 Logs: `docker logs flint`
 
 ## License
 
 MIT — see [LICENSE](LICENSE). Flint itself is MIT licensed by its author.
+
